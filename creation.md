@@ -6,3 +6,4 @@ vim templates/geheim.css
 npx tailwindcss -i templates/geheim.css -o ./templates/geheim.min.css --watch
 github .
 typora readme.md
+pipreqs
