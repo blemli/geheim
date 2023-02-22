@@ -2,8 +2,6 @@ import os
 
 import psycopg2
 
-from initialize import initialize_db
-
 
 def _connect(connection_string):
     connection = None
@@ -31,6 +29,28 @@ def _execute_query(query, data=None):
         print(f"The error '{e}' occurred")
 
 
+def initialize_db():
+    remove_secrets_table = "DROP TABLE secrets;"
+    _execute_query(remove_secrets_table)
+    overwrite = ""  # "IF NOT EXISTS"
+    create_secrets_query = """
+CREATE TABLE {overwrite} secrets (
+  id VARCHAR PRIMARY KEY NOT NULL,
+  ciphertext TEXT NOT NULL,
+  saved DATE NOT NULL DEFAULT CURRENT_DATE
+);
+"""
+    print(create_secrets_query)
+    _execute_query(create_secrets_query)
+
+
+def get_tables():  # todo: remove?
+    query = """SELECT table_schema,table_name
+FROM information_schema.tables
+ORDER BY table_schema,table_name;"""
+    return _execute_query(query)
+
+
 def store(id, secret):
     insert_query = (
         f"INSERT INTO secrets (id, ciphertext) VALUES {id,secret}"
@@ -48,6 +68,7 @@ def cleanup():
 
 
 connection = _connect(os.environ['DB_CONNECTION'])
+initialize_db()
 
 
 def test():
