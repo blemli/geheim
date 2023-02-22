@@ -31,13 +31,13 @@ def _execute_query(query, data=None):
 
 def store(id, secret):
     insert_query = (
-        f"INSERT INTO secrets (id, ciphertext) VALUES uuid({id}),{secret}"
+        f"INSERT INTO secrets (id, ciphertext) VALUES {id,secret}"
     )
     _execute_query(insert_query)
 
 
 def retrieve(id):
-    select_query = f"SELECT ciphertext FROM secrets WHERE id = uuid({id})"
+    select_query = f"SELECT ciphertext FROM secrets WHERE id = {id}"
     return _execute_query(select_query)
 
 
@@ -49,5 +49,5 @@ connection = _connect(os.environ['DB_CONNECTION'])
 
 
 def test():
-    store(123, "gaga")
-    return retrieve(123)
+    store("123", "gaga")
+    return retrieve("123")

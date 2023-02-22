@@ -1,6 +1,6 @@
 import flask
 import flask_limiter as lim
-import flask_limiter.util as util
+import flask_limiter.util as util  # todo: remove import?
 import database as db
 
 
@@ -14,6 +14,10 @@ def index():
     test = db.test()
     return flask.render_template("index.html", test=test)
 
+
+@app.route("/store", methods=["POST"])
+def store(id, ciphertext):
+    pass  # todo: implement
 
 @app.route("/retrieve/<key>")
 @limiter.limit("100/minute, 1000/hour, 1000/day")

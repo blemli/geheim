@@ -2,9 +2,10 @@ import database as db
 
 
 def initialize_db():
+    overwrite = ""  # "IF NOT EXISTS"
     create_secrets_query = """
-CREATE TABLE IF NOT EXISTS secrets (
-  id UUID PRIMARY KEY NOT NULL,
+CREATE TABLE {overwrite} secrets (
+  id VARCHAR PRIMARY KEY NOT NULL,
   ciphertext TEXT NOT NULL,
   saved DATE NOT NULL DEFAULT CURRENT_DATE
 );
