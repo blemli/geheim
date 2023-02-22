@@ -6,18 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link href="geheim.min.css" rel="stylesheet" />
-    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Phudu" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
+    <style>
+        h1 {
+            font-family: 'Phudu';
+        }
+    </style>
+    <title>Geheim</title>
 </head>
 
 <body>
-    <h1></h1>
+    <script src="waves.js"></script>
     <div class="particle-network-animation">
         <div class="flex items-center justify-center h-screen">
-            <div class="bg-indigo-800 text-black font-bold rounded-lg border shadow-lg p-10 glass">
-                {{ tables }}
+            <div class="bg-black text-black font-bold rounded-lg border shadow-lg pt-24 px-24 pb-12 glass halo">
+                <h1 class="text-5xl text-center pb-16 text-center text-purple-400">Passwort sicher versenden</h1>
+                <div class="relative mb-4">
+                    <input autofocus autocomplete="new-password" type="password" id="password" name="password" placeholder="Me!nSuperS!cheresPassw0rt"
+                        class="text-2xl p-12 w-full bg-transparent rounded-xl border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-white  leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+                <button class="flex float-right text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                    versenden
+                </button>
+                <div class="mt-32 grid grid-cols-3 gap-4 text-purple-500 text-center ">
+                    <div class="hover:italic"><a href="/warum">
+                            <div class="hover:italic">Warum?</div>
+                        </a></div>
+                    <div class="..."><a href="wie">Wie?</a></div>
+                    <div class="..."><a href="https://problem.li">Wer?</a></div>
             </div>
-        </div>
+            </div>
     </div>
-</body>
 
+</body>
 </html>
