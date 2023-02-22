@@ -19,8 +19,12 @@ def _execute_query(connection, query):
     try:
         cursor.execute(query)
         print("Query executed successfully")
-        result = cursor.fetchall()
-        return result
+        try:
+            result = cursor.fetchall()
+            return result
+        except psycopg2.ProgrammingError as e:
+            print(f"{e}")
+            return None
     except psycopg2.OperationalError as e:
         print(f"The error '{e}' occurred")
 
