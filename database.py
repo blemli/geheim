@@ -1,4 +1,5 @@
 import os
+
 import psycopg2
 
 
@@ -48,13 +49,13 @@ ORDER BY table_schema,table_name;"""
 
 def store_secret(id, secret):
     insert_query = (
-        f"INSERT INTO secrets (id, ciphertext) VALUES {id,secret}"
+        f"INSERT INTO secrets (uuid(id), ciphertext) VALUES {id,secret}"
     )
     _execute_query(insert_query)
 
 
 def retrieve_secret(id):
-    select_query = f"SELECT ciphertext FROM secrets WHERE id = {id}"
+    select_query = f"SELECT ciphertext FROM secrets WHERE id = uuid({id})"
     return _execute_query(select_query)
 
 
