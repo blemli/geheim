@@ -29,32 +29,14 @@ def _execute_query(query, data=None):
         print(f"The error '{e}' occurred")
 
 
-def init():
-    create_secrets_query = """
-CREATE TABLE IF NOT EXISTS secrets (
-  id UUID PRIMARY KEY NOT NULL,
-  ciphertext TEXT NOT NULL,
-  saved DATE NOT NULL DEFAULT CURRENT_DATE
-);
-"""
-    _execute_query(create_secrets_query)
-
-
-def get_tables():  # todo: remove?
-    query = """SELECT table_schema,table_name
-FROM information_schema.tables
-ORDER BY table_schema,table_name;"""
-    return _execute_query(query)
-
-
-def store_secret(id, secret):
+def store(id, secret):
     insert_query = (
         f"INSERT INTO secrets (uuid(id), ciphertext) VALUES {id,secret}"
     )
     _execute_query(insert_query)
 
 
-def retrieve_secret(id):
+def retrieve(id):
     select_query = f"SELECT ciphertext FROM secrets WHERE id = uuid({id})"
     return _execute_query(select_query)
 
@@ -67,5 +49,5 @@ connection = _connect(os.environ['DB_CONNECTION'])
 
 
 def test():
-    store_secret(123, "gaga")
-    return retrieve_secret(123)
+    store(123, "gaga")
+    return retrieve(123)

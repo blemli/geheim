@@ -1,7 +1,7 @@
 import flask
 import flask_limiter as lim
 import flask_limiter.util as util
-import database
+import database as db
 
 
 
@@ -10,12 +10,13 @@ limiter = lim.Limiter(app, key_func=util.get_remote_address)
 
 @app.route("/")
 @limiter.limit("100/minute, 1000/hour, 1000/day")
-def hello_world():
-    tables = database.test()
-    return flask.render_template("index.html", tables=tables)
+def index():
+    test = db.test()
+    return flask.render_template("index.html", test=test)
 
 
 @app.route("/retrieve/<key>")
 @limiter.limit("100/minute, 1000/hour, 1000/day")
 def retrieve(key):
-    pass  # todo: implement
+    ciphertext = db.retrieve(key)
+    return flask.render_template("retrieve.html", key=key, ciphertext=ciphertext)
