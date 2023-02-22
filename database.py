@@ -59,7 +59,10 @@ def store(id, secret):
 
 def retrieve(id):
     select_query = f"SELECT ciphertext FROM secrets WHERE id ='{id}';"
-    return _execute_query(select_query)
+    delete_query = f"DELETE FROM secrets WHERE id ='{id}';"
+    cipher = _execute_query(select_query)[0]
+    _execute_query(delete_query)
+    return cipher
 
 
 def cleanup():
