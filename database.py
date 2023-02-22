@@ -49,5 +49,6 @@ connection = _connect(os.environ['DB_CONNECTION'])
 
 
 def test():
+    print("testing database")
     store("123", "gaga")
     return retrieve("123")
