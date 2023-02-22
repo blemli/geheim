@@ -32,9 +32,8 @@ def _execute_query(query, data=None):
 def initialize_db():
     remove_secrets_table = "DROP TABLE secrets;"
     _execute_query(remove_secrets_table)
-    overwrite = ""  # "IF NOT EXISTS"
     create_secrets_query = """
-CREATE TABLE {overwrite} secrets (
+CREATE TABLE IF NOT EXISTS secrets (
   id VARCHAR PRIMARY KEY NOT NULL,
   ciphertext TEXT NOT NULL,
   saved DATE NOT NULL DEFAULT CURRENT_DATE
@@ -68,7 +67,6 @@ def cleanup():
 
 
 connection = _connect(os.environ['DB_CONNECTION'])
-initialize_db()
 
 
 def test():
