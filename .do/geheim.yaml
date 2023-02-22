@@ -1,17 +1,20 @@
 alerts:
 - rule: DEPLOYMENT_FAILED
 - rule: DOMAIN_FAILED
-
+domains:
+- domain: geheim.problem.li
+  type: PRIMARY
+ingress: {}
 name: geheim
 region: fra
 services:
-- environment_slug: python
+- environment_slug: node-js
   github:
     branch: main
     deploy_on_push: true
     repo: blemli/geheim
   http_port: 8080
-  instance_count: 1
+  instance_count: 2
   instance_size_slug: professional-xs
   name: geheim
   routes:
