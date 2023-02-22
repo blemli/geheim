@@ -30,7 +30,7 @@ def _execute_query(query, data=None):
 
 
 def initialize_db():
-    remove_secrets_table = "DROP TABLE secrets;"
+    remove_secrets_table = "DROP TABLE IF EXISTS secrets;"
     _execute_query(remove_secrets_table)
     create_secrets_query = """
 CREATE TABLE IF NOT EXISTS secrets (

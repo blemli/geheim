@@ -16,29 +16,38 @@
     <title>Geheim</title>
 </head>
 
-<body>
-    <script src="waves.js"></script>
+<body class="background">
+    <!-- <script src="waves.js"></script> -->
     <div class="particle-network-animation">
-        <div class="flex items-center justify-center h-screen">
-            <div class="bg-black text-black font-bold rounded-lg border shadow-lg pt-24 px-24 pb-12 glass halo">
-                <h1 class="text-5xl text-center pb-16 text-center text-purple-400">Passwort sicher versenden</h1>
-                <div class="relative mb-4">
-                    <input autofocus autocomplete="new-password" type="password" id="password" name="password" placeholder="Me!nSuperS!cheresPassw0rt"
-                        class="text-2xl p-12 w-full bg-transparent rounded-xl border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-white  leading-8 transition-colors duration-200 ease-in-out">
+        <div class="flex md:items-center justify-center h-screen shadow-lg">
+            <div class="bg-black text-black font-bold rounded-lg mt-0 border pt-24 px-24 pb-12 glass ">
+                <div class="flex flex-row items-center align-middle mb-12">
+                    <img src="lock.svg" class="w-16 mt-0" alt="">
+                    <div class="align-middle">
+                        <h1 class="align-middle text-5xl text-center text-white">{{ test }} Passwort <span class="hidden md:inline">sicher
+                            </span>versenden
+                        </h1>
+                    </div>
                 </div>
-                <button class="flex float-right text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                <div class="relative mb-4">
+                    <input autofocus autocomplete="one-time-password" type="password" id="password" name="password" placeholder="Me!nSuperS!cheresPassw0rt"
+                        class="glass text-2xl p-12 w-full bg-transparent rounded-xl border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-white  leading-8 transition-colors duration-200 ease-in-out">
+                </div>
+                <button class="flex float-right text-white bg-purple-500 border-white py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                     versenden
                 </button>
                 <div>{{test}}</div>
-                <div class="mt-32 grid grid-cols-3 gap-4 text-purple-500 text-center ">
-                    <div class="hover:italic"><a href="/warum">
-                            <div class="hover:italic">Warum?</div>
+                <div class="mt-32 grid grid-cols-3 gap-4 text-purple-500 text-center hover:bold">
+                    <div class="..."><a href="/warum" class="hover:text-purple-200">
+                            Warum?
                         </a></div>
-                    <div class="..."><a href="wie">Wie?</a></div>
-                    <div class="..."><a href="https://problem.li">Wer?</a></div>
+                    <div class="..."><a class="hover:text-purple-200" href="wie">Wie?</a></div>
+                    <div class="..."><a class="hover:text-purple-200" href="https://problem.li">Wer?</a></div>
+                    </div>
+                </>
             </div>
-            </div>
-    </div>
+        </div>
 
-</body>
+</bodyclass>
+
 </html>
