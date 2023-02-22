@@ -31,7 +31,7 @@ def _execute_query(query, data=None):
 
 def store(id, secret):
     insert_query = (
-        f"INSERT INTO secrets (uuid(id), ciphertext) VALUES {id,secret}"
+        f"INSERT INTO secrets (id, ciphertext) VALUES uuid({id}),{secret}"
     )
     _execute_query(insert_query)
 
