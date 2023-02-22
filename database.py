@@ -2,6 +2,8 @@ import os
 
 import psycopg2
 
+from initialize import initialize_db
+
 
 def _connect(connection_string):
     connection = None
@@ -50,5 +52,6 @@ connection = _connect(os.environ['DB_CONNECTION'])
 
 def test():
     print("testing database")
+    initialize_db()
     store("123", "gaga")
     return retrieve("123")
