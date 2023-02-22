@@ -52,13 +52,13 @@ ORDER BY table_schema,table_name;"""
 
 def store(id, secret):
     insert_query = (
-        f"INSERT INTO secrets (id, ciphertext) VALUES {id,secret}"
+        f"INSERT INTO secrets (id, ciphertext) VALUES {id,secret};"
     )
     _execute_query(insert_query)
 
 
 def retrieve(id):
-    select_query = f"SELECT ciphertext FROM secrets WHERE id = {id}"
+    select_query = f"SELECT ciphertext FROM secrets WHERE id ='{id}';"
     return _execute_query(select_query)
 
 
