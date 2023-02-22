@@ -1,5 +1,6 @@
-import psycopg2
 import os
+
+import psycopg2
 
 
 def _connect(connection_string):
@@ -27,7 +28,7 @@ def _execute_query(connection, query):
 def init(db):
 	create_secrets_query = """
 CREATE TABLE IF NOT EXISTS secrets (
-  id STRING PRIMARY KEY NOT NULL,
+  id UUID PRIMARY KEY NOT NULL,
   ciphertext TEXT NOT NULL,
   saved DATE NOT NULL DEFAULT CURRENT_DATE
 );
